@@ -1,0 +1,14 @@
+:global(.particles-canvas-background) {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1 !important;
+  pointer-events: none;
+}
+
+.home-guest-container {
+  position: relative;
+  z-index: 1;
+}

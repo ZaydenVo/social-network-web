@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import styles from './Home.module.scss';
+import { HomeFeed } from './components/HomeFeed';
+import { HomeGuest } from './components/HomeGuest';
 
 function Home() {
-  return <h2>Home</h2>;
+  const [isLogin, setIsLogin] = useState(false);
+  return isLogin ? <HomeFeed /> : <HomeGuest />;
 }
 
 export default Home;
