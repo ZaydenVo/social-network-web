@@ -12,3 +12,25 @@
   position: relative;
   z-index: 1;
 }
+
+.wrapper {
+  display: flex;
+  margin-top: 100px;
+}
+
+.slogan {
+  font-size: 6.2rem;
+  font-weight: 300;
+  color: #f8f9fa;
+
+  .highlight {
+    display: block;
+    font-size: 7.2rem;
+    color: #00ffff;
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+    margin-top: 1.5rem;
+  }
+}
+
+.logo {
+}

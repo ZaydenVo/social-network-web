@@ -3,20 +3,104 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 56px;
+  height: 100px;
   border-bottom: 1px solid #3a3c3d;
 }
 
 .inner {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem 2rem;
 }
 
 .leftBlock {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+
+  .logo_wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 4px;
+    background-color: transparent;
+    border: 4px solid rgba(0, 255, 255, 0.4);
+    box-sizing: border-box;
+
+    img {
+      width: 150px;
+      height: auto;
+      display: block;
+      filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(151deg)
+        brightness(100%) contrast(119%);
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: 4px solid transparent;
+      visibility: hidden;
+      box-sizing: border-box;
+    }
+
+    &::before {
+      top: -4px;
+      left: -4px;
+      transition:
+        width 0.2s ease,
+        height 0.2s ease 0.2s,
+        visibility 0s 0.4s;
+    }
+
+    &::after {
+      bottom: -4px;
+      right: -4px;
+      transition:
+        width 0.2s ease,
+        height 0.2s ease 0.2s,
+        visibility 0s 0.4s;
+    }
+
+    &:hover {
+      &::before,
+      &::after {
+        visibility: visible;
+        width: calc(100% + 8px);
+        height: calc(100% + 8px);
+      }
+
+      &::before {
+        border-top-color: #d4f000;
+        border-right-color: #d4f000;
+        transition:
+          visibility 0s,
+          width 0.2s ease,
+          height 0.2s ease 0.2s;
+      }
+
+      &::after {
+        border-bottom-color: #d4f000;
+        border-left-color: #d4f000;
+        transition:
+          visibility 0s,
+          width 0.2s ease,
+          height 0.2s ease 0.2s;
+      }
+    }
+  }
 }
 
 .centerBlock {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .rightBlock {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }

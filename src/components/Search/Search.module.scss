@@ -1,0 +1,30 @@
+.search {
+  height: 40px;
+  width: auto;
+  background-color: transparent;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  transition: all 0.3s ease;
+
+  input {
+    flex: 1;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #00ffff;
+  }
+
+  &:focus-within,
+  &:hover {
+    border-color: #00ffff;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+  }
+}
+
+.searchButton {
+  color: #00ffff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

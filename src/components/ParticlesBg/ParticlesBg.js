@@ -9,7 +9,7 @@ function ParticlesBg() {
   const options = {
     background: {
       color: {
-        value: '#0d1117',
+        value: '#020204',
       },
     },
     fpsLimit: 120,
@@ -21,39 +21,44 @@ function ParticlesBg() {
         },
         onHover: {
           enable: true,
-          mode: 'grab',
+          mode: 'attract',
         },
       },
       modes: {
         push: { quantity: 4 },
-        grab: { distance: 140, links: { opacity: 0.5 } },
+        attract: { distance: 200, duration: 0.4, factor: 3 },
       },
     },
     particles: {
       color: {
-        value: '#58a6ff',
+        value: '#00ffff',
       },
       links: {
         enable: true,
         distance: 150,
-        color: '#58a6ff',
+        color: '#00cccc',
         opacity: 0.25,
         width: 1,
       },
       move: {
         enable: true,
-        speed: 1.5,
+        speed: 1.2,
         outModes: { default: 'bounce' },
+        attract: {
+          enable: true,
+          rotateX: 600,
+          rotateY: 1200,
+        },
       },
       number: {
         density: { enable: true, area: 800 },
-        value: 70,
+        value: 75,
       },
       opacity: {
         value: 0.5,
       },
       size: {
-        value: { min: 1, max: 3 },
+        value: { min: 1, max: 3.5 },
       },
     },
   };
