@@ -2,7 +2,7 @@ import { Button } from '~/components/Button';
 import styles from './Login.module.scss';
 import clsx from 'clsx';
 
-function Login({ className }) {
+function Login({ className, onSwitchMode }) {
   return (
     <div className={clsx(styles.loginForm, className)}>
       <form className={styles.form}>
@@ -29,7 +29,7 @@ function Login({ className }) {
           <Button type="submit" className={styles.button1} primary>
             Login
           </Button>
-          <Button className={styles.button2} outline>
+          <Button className={styles.button2} onClick={onSwitchMode} outline>
             Sign up
           </Button>
         </div>

@@ -7,7 +7,7 @@ import { Button } from '~/components/Button';
 import { useAuthUI } from '~/Provider/AuthUIProvider';
 
 function Header() {
-  const { setIsSignInOpen } = useAuthUI();
+  const { isSignInOpen, setIsSignInOpen } = useAuthUI();
 
   return (
     <header className={styles.wrapper}>
@@ -23,7 +23,7 @@ function Header() {
         </div>
 
         <div className={styles.rightBlock}>
-          <Button primary onClick={() => setIsSignInOpen(true)}>
+          <Button primary onClick={() => setIsSignInOpen(!isSignInOpen)}>
             Sign in
           </Button>
         </div>
