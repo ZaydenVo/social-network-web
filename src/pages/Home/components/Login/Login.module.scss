@@ -1,7 +1,3 @@
-.loginPage {
-  display: flex;
-}
-
 .form {
   width: 450px;
   min-height: 100px;
@@ -14,6 +10,19 @@
   margin: 24px;
   align-self: center;
   box-shadow: 4px 8px 20px rgba(125, 124, 124, 0.948);
+
+  animation: slideFadeIn 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .header {

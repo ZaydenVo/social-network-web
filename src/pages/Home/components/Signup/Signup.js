@@ -7,7 +7,7 @@ import { faAnglesLeft } from '@fortawesome/free-solid-svg-icons';
 
 function Signup({ onSwitchMode }) {
   return (
-    <div className={styles.signupPage}>
+    <div>
       <form className={styles.form}>
         <h3 className={styles.header}>
           <FontAwesomeIcon
