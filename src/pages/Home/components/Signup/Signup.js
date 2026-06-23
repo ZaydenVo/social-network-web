@@ -4,11 +4,32 @@ import { FieldInput } from '~/components/FieldInput';
 import { Button } from '~/components/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesLeft } from '@fortawesome/free-solid-svg-icons';
+import { validate } from '~/FormValidator';
+import { useFormCustom } from '~/hooks';
 
 function Signup({ onSwitchMode }) {
+  const initialValues = {
+    username: '',
+    password: '',
+    confirmPassword: '',
+    firstName: '',
+    lastName: '',
+    dob: '',
+    email: '',
+    city: '',
+  };
+
+  const handleSignup = () => {};
+
+  const { values, errors, handleChange, handleSubmit } = useFormCustom(
+    initialValues,
+    validate,
+    handleSignup,
+  );
+
   return (
     <div>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <h3 className={styles.header}>
           <FontAwesomeIcon
             icon={faAnglesLeft}
@@ -24,9 +45,9 @@ function Signup({ onSwitchMode }) {
               label={field.label}
               name={field.name}
               type={field.type || 'text'}
-              // value
-              error
-              //onChange
+              value={values[field.name]}
+              error={errors[field.name]}
+              onChange={handleChange}
               placeholder={field.placeholder}
               options={field.options}
             />
