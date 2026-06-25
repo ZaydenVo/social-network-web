@@ -2,12 +2,17 @@ import { Button } from '~/components/Button';
 import styles from './Login.module.scss';
 import clsx from 'clsx';
 import { useFormCustom } from '~/hooks';
+import httpRequest from '~/utils/httpRequest';
+import { useContext } from 'react';
+import { UserInfoContext } from '~/Provider/UserInfoProvider';
 
 function Login({ className, onSwitchMode }) {
   const initialValues = {
     username: '',
     password: '',
   };
+
+  const { fetchUserInfo } = useContext(UserInfoContext);
 
   const validate = (values) => {
     const errors = {};
@@ -23,7 +28,24 @@ function Login({ className, onSwitchMode }) {
     return errors;
   };
 
-  const handleLogin = () => {};
+  const handleLogin = async () => {
+    try {
+      const response = await httpRequest.post('identity/auth/token', {
+        username: values.username,
+        password: values.password,
+      });
+      const token = response.data.result.token;
+      localStorage.setItem('token', token);
+      fetchUserInfo();
+    } catch (error) {
+      if (error.response && error.response.data) {
+        const errorMessage = error.response.data.message || 'Please try again!';
+        alert(errorMessage);
+      } else {
+        alert('Please try again later!');
+      }
+    }
+  };
 
   const { values, errors, handleChange, handleSubmit } = useFormCustom(
     initialValues,
