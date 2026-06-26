@@ -5,12 +5,51 @@ import images from '~/assets/images';
 import { Search } from '~/components/Search';
 import { Button } from '~/components/Button';
 import { useAuthUI } from '~/Provider/AuthUIProvider';
+import { useEffect, useState } from 'react';
+import clsx from 'clsx';
 
 function Header() {
   const { isSignInOpen, setIsSignInOpen } = useAuthUI();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleColorChange = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleColorChange);
+
+    return () => {
+      window.removeEventListener('scroll', handleColorChange);
+    };
+  }, []);
+
+  const handleOpenForm = () => {
+    const scrollTop = window.scrollY;
+    const isUnderFeed = scrollTop > 400;
+
+    if (isUnderFeed) {
+      window.isAutoScrollingUp = true;
+
+      setIsSignInOpen(true);
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    } else {
+      setIsSignInOpen(!isSignInOpen);
+    }
+  };
 
   return (
-    <header className={styles.wrapper}>
+    <header className={clsx(styles.wrapper, { [styles.active]: isScrolled })}>
       <div className={styles.inner}>
         <div className={styles.leftBlock}>
           <Link to="/" className={styles.logo_wrapper}>
@@ -23,7 +62,7 @@ function Header() {
         </div>
 
         <div className={styles.rightBlock}>
-          <Button primary onClick={() => setIsSignInOpen(!isSignInOpen)}>
+          <Button primary onClick={handleOpenForm}>
             Sign in
           </Button>
         </div>
