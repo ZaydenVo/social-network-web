@@ -1,10 +1,13 @@
 import AuthUIProvider from './AuthUIProvider';
+import { ThemeProvider } from './ThemeProvider';
 import { UserInfoProvider } from './UserInfoProvider';
 
 function AppProvider({ children }) {
   return (
     <UserInfoProvider>
-      <AuthUIProvider>{children}</AuthUIProvider>
+      <ThemeProvider>
+        <AuthUIProvider>{children}</AuthUIProvider>
+      </ThemeProvider>
     </UserInfoProvider>
   );
 }

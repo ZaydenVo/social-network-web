@@ -1,20 +1,16 @@
 import { useContext } from 'react';
-import { HomeFeed } from './components/HomeFeed';
-import { HomeGuest } from './components/HomeGuest';
-import DefaultLayout from '~/layouts/DefaultLayout/DefaultLayout';
-import { HeaderOnly } from '~/layouts/components/HeaderOnly';
+import { AuthPanel } from './components/AuthPanel';
 import { UserInfoContext } from '~/Provider/UserInfoProvider';
+import { HomeLayout } from '~/pages/Home/HomeLayout';
+import { useAuthUI } from '~/Provider/AuthUIProvider';
 
 function Home() {
   const { isLogin } = useContext(UserInfoContext);
-  return isLogin ? (
-    <DefaultLayout>
-      <HomeFeed />
-    </DefaultLayout>
-  ) : (
-    <HeaderOnly>
-      <HomeGuest />
-    </HeaderOnly>
+  const { isSignInOpen } = useAuthUI();
+  return (
+    <HomeLayout active={!isLogin && isSignInOpen}>
+      {!isLogin ? <AuthPanel /> : null}
+    </HomeLayout>
   );
 }
 

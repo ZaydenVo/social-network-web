@@ -30,6 +30,13 @@ function Header() {
     };
   }, []);
 
+  const handleClickLogo = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   const handleOpenForm = () => {
     const scrollTop = window.scrollY;
     const isUnderFeed = scrollTop > 400;
@@ -52,7 +59,11 @@ function Header() {
     <header className={clsx(styles.wrapper, { [styles.active]: isScrolled })}>
       <div className={styles.inner}>
         <div className={styles.leftBlock}>
-          <Link to="/" className={styles.logo_wrapper}>
+          <Link
+            to="/"
+            className={styles.logo_wrapper}
+            onClick={handleClickLogo}
+          >
             <Image src={images.logo_z} alt="logo_z" />
           </Link>
         </div>

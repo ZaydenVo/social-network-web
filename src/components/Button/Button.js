@@ -17,10 +17,15 @@ function Button({
   large,
   children,
   onClick,
+  type,
   ...passProps
 }) {
   let Comp = 'button';
   const props = { onClick, ...passProps };
+
+  if (!type) {
+    props.type = 'button';
+  }
 
   if (disabled) {
     Object.keys(props).forEach((key) => {

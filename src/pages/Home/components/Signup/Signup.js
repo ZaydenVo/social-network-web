@@ -66,7 +66,7 @@ function Signup({ onSwitchMode }) {
         <div className={styles.fieldWrapper}>
           {FormFields.map((field) => (
             <FieldInput
-              key={field.key}
+              key={field.name}
               label={field.label}
               name={field.name}
               type={field.type || 'text'}
