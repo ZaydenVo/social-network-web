@@ -5,11 +5,16 @@ import images from '~/assets/images';
 import { Search } from '~/components/Search';
 import { Button } from '~/components/Button';
 import { useAuthUI } from '~/Provider/AuthUIProvider';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import clsx from 'clsx';
+import { UserInfoContext } from '~/Provider/UserInfoProvider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faComment } from '@fortawesome/free-regular-svg-icons';
 
 function Header() {
   const { isSignInOpen, setIsSignInOpen } = useAuthUI();
+  const { isLogin, userInfo } = useContext(UserInfoContext);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -73,9 +78,28 @@ function Header() {
         </div>
 
         <div className={styles.rightBlock}>
-          <Button primary onClick={handleOpenForm}>
-            Sign in
-          </Button>
+          {true ? (
+            <div>
+              <Button primary circle>
+                <FontAwesomeIcon icon={faPlus} />
+              </Button>
+              <Button primary circle>
+                <FontAwesomeIcon icon={faComment} />
+              </Button>
+              <Button primary circle>
+                <FontAwesomeIcon icon={faBell} />
+              </Button>
+              <Image
+                src={userInfo?.avatar}
+                alt="User avatar"
+                className={styles.avatar}
+              />
+            </div>
+          ) : (
+            <Button primary onClick={handleOpenForm}>
+              Sign in
+            </Button>
+          )}
         </div>
       </div>
     </header>

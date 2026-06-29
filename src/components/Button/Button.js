@@ -18,6 +18,7 @@ function Button({
   children,
   onClick,
   type,
+  circle,
   ...passProps
 }) {
   let Comp = 'button';
@@ -53,6 +54,7 @@ function Button({
     [styles.rounded]: rounded,
     [styles.leftIcon]: leftIcon,
     [styles.invisible]: invisible,
+    [styles.circle]: circle,
   });
 
   return (
