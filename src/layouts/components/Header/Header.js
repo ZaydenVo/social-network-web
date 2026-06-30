@@ -78,7 +78,7 @@ function Header() {
         </div>
 
         <div className={styles.rightBlock}>
-          {true ? (
+          {isLogin ? (
             <div>
               <Button primary circle>
                 <FontAwesomeIcon icon={faPlus} />

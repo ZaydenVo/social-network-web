@@ -5,6 +5,7 @@ import images from '~/assets/images';
 import clsx from 'clsx';
 import { useEffect, useRef } from 'react';
 import { useTheme } from '~/Provider/ThemeProvider';
+import { Link } from 'react-router-dom';
 
 function HomeLayout({ children, active = false }) {
   const feedRef = useRef(null);
@@ -69,6 +70,42 @@ function HomeLayout({ children, active = false }) {
       <section className={styles.feedSection} ref={feedRef}>
         <h2 className={styles.feedTitle}>Khám phá Vũ Trụ Tri Thức</h2>
       </section>
+
+      <footer className={styles.footer}>
+        <div className={styles.footerMain}>
+          <div className={styles.brandInfo}>
+            <Image
+              src={images.logo_z}
+              className={styles.footerLogo}
+              alt="logo_footer"
+            />
+            <a
+              href="mailto:zenithoravn@gmail.com"
+              className={styles.footerLink}
+            >
+              zenithoravn@gmail.com
+            </a>
+          </div>
+          <div className={styles.footerQuote}>
+            <p>
+              A sanctuary for deep thinkers, cosmic explorers, and lifetime
+              learners.
+            </p>
+          </div>
+        </div>
+        <div className={styles.footerBottom}>
+          <Link to="/faq" className={styles.footerBottomLink}>
+            FAQ
+          </Link>
+          <Link to="/terms" className={styles.footerBottomLink}>
+            Terms of Service
+          </Link>
+          <Link to="/privacy" className={styles.footerBottomLink}>
+            Privacy Policy
+          </Link>
+          <span className={styles.copyright}>© 2026 Zenithora</span>
+        </div>
+      </footer>
     </div>
   );
 }
