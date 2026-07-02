@@ -6,6 +6,8 @@ import clsx from 'clsx';
 import { useEffect, useRef } from 'react';
 import { useTheme } from '~/Provider/ThemeProvider';
 import { Link } from 'react-router-dom';
+import { COSMIC_INSIGHTS } from './cosmicInsights.data';
+import { InsightCard } from '../components/InsightCard';
 
 function HomeLayout({ children, active = false }) {
   const feedRef = useRef(null);
@@ -19,7 +21,7 @@ function HomeLayout({ children, active = false }) {
     const handleScrollEvent = () => {
       const scrollTop = window.scrollY;
 
-      if (scrollTop > 500) {
+      if (scrollTop > 10) {
         setIsLightMode(true);
       } else {
         setIsLightMode(false);
@@ -40,10 +42,11 @@ function HomeLayout({ children, active = false }) {
 
   return (
     <div
-      className={clsx(styles.wrapper, {
-        [styles.active]: active,
-        [styles.lightTheme]: isLightMode,
-      })}
+      className={clsx(
+        styles.wrapper,
+        { [styles.active]: active },
+        { lightTheme: isLightMode },
+      )}
     >
       <section className={styles.welcomeSection}>
         <ParticlesBg />
@@ -69,6 +72,16 @@ function HomeLayout({ children, active = false }) {
 
       <section className={styles.feedSection} ref={feedRef}>
         <h2 className={styles.feedTitle}>Khám phá Vũ Trụ Tri Thức</h2>
+        <div className={styles.insights}>
+          {COSMIC_INSIGHTS.map((item) => (
+            <InsightCard
+              key={item.tag}
+              tag={item.tag}
+              content={item.content}
+              author={item.author}
+            />
+          ))}
+        </div>
       </section>
 
       <footer className={styles.footer}>

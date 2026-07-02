@@ -172,6 +172,12 @@
   }
 }
 
+.insights {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
 .footer {
   width: 100%;
   background-color: rgba(18, 21, 28, 0.8);

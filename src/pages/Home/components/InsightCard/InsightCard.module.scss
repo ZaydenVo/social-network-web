@@ -1,0 +1,48 @@
+.cardWrapper {
+  position: relative;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+
+  &:hover {
+    transform: translateY(-5px);
+    background-color: var(--card-bg-hover, rgba(255, 255, 255, 0.05));
+    border-color: var(--card-border-hover);
+    box-shadow: 0 10px 30px var(--card-shadow-hover);
+  }
+
+  .cardTag {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    color: #00ffff;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .cardContent {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: var(--card-text);
+    font-weight: 300;
+    margin: 0;
+    font-style: italic;
+  }
+
+  .cardAuthor {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    color: var(--card-author);
+    font-weight: 400;
+    margin-top: auto;
+    align-self: flex-end;
+  }
+}
