@@ -11,6 +11,7 @@ import { UserInfoContext } from '~/Provider/UserInfoProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faBell, faComment } from '@fortawesome/free-regular-svg-icons';
+import { ThemeSwitcher } from '~/components/ThemeSwitcher';
 
 function Header() {
   const { isSignInOpen, setIsSignInOpen } = useAuthUI();
@@ -100,6 +101,7 @@ function Header() {
               Sign in
             </Button>
           )}
+          <ThemeSwitcher />
         </div>
       </div>
     </header>

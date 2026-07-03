@@ -3,7 +3,7 @@ import styles from './HomeLayout.module.scss';
 import { Image } from '~/components/Image';
 import images from '~/assets/images';
 import clsx from 'clsx';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useTheme } from '~/Provider/ThemeProvider';
 import { Link } from 'react-router-dom';
 import { COSMIC_INSIGHTS } from './cosmicInsights.data';
@@ -11,34 +11,11 @@ import { InsightCard } from '../components/InsightCard';
 
 function HomeLayout({ children, active = false }) {
   const feedRef = useRef(null);
-  const { isLightMode, setIsLightMode } = useTheme();
+  const { isLightMode } = useTheme();
 
   const handleScrollToFeed = () => {
     feedRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
-
-  useEffect(() => {
-    const handleScrollEvent = () => {
-      const scrollTop = window.scrollY;
-
-      if (scrollTop > 10) {
-        setIsLightMode(true);
-      } else {
-        setIsLightMode(false);
-      }
-
-      if (scrollTop <= 10) {
-        window.isAutoScrollingUp = false;
-      }
-    };
-
-    window.addEventListener('scroll', handleScrollEvent);
-
-    return () => {
-      window.removeEventListener('scroll', handleScrollEvent);
-      setIsLightMode(false);
-    };
-  }, [setIsLightMode]);
 
   return (
     <div
