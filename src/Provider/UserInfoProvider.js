@@ -17,7 +17,7 @@ export function UserInfoProvider({ children }) {
       const response = await httpRequest.get('profile/users/my-info', {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setUserInfo(JSON.stringify(response.data.result));
+      setUserInfo(response.data.result);
     } catch (error) {
       console.log(error);
       localStorage.removeItem('token');

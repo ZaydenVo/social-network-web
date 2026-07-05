@@ -4,7 +4,7 @@ const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [userTheme, setUserTheme] = useState(() => {
-    return localStorage.getItem('zenithora-theme') || 'system';
+    return localStorage.getItem('zenithora-theme') || 'light';
   });
 
   const [isLightMode, setIsLightMode] = useState(true);

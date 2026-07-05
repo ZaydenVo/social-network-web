@@ -12,6 +12,12 @@
   --card-text: #e4e6eb;
   --card-author: rgba(255, 255, 255, 0.4);
   --card-shadow-hover: rgba(0, 255, 255, 0.1);
+
+  --menu-bg: #1c1e26;
+  --menu-text: #f4f4f5;
+  --menu-hover-bg: #f4f4f590;
+  --menu-border: rgba(255, 255, 255, 0.08);
+  --menu-sub-title: rgba(255, 255, 255, 0.4);
 }
 
 .lightTheme {
@@ -25,6 +31,12 @@
   --card-text: #242526;
   --card-author: rgba(0, 0, 0, 0.45);
   --card-shadow-hover: rgba(0, 0, 0, 0.08);
+
+  --menu-bg: #ffffff;
+  --menu-text: #1c1e21;
+  --menu-hover-bg: #e4e4e7;
+  --menu-border: rgba(0, 0, 0, 0.08);
+  --menu-sub-title: rgba(0, 0, 0, 0.45);
 }
 
 * {

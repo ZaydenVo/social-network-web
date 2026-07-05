@@ -1,0 +1,104 @@
+$bg-color: var(--menu-bg);
+$text-color: var(--menu-text);
+$hover-bg: var(--menu-hover-bg);
+$border-color: var(--menu-border);
+$shadow:
+  0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  0 4px 6px -4px rgba(0, 0, 0, 0.05);
+
+.dropdownMenu {
+  min-width: 200px;
+  background-color: $bg-color;
+  border-radius: 12px;
+  padding: 6px;
+  border: 1px solid $border-color;
+  box-shadow: $shadow;
+  z-index: 9999;
+
+  animation: slideUpAndFade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.separator {
+  height: 1px;
+  background-color: #e4e4e7;
+  margin: 6px;
+}
+
+.optWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  font-size: 1.4rem;
+  color: $text-color;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+
+  &[data-highlighted] {
+    background-color: $hover-bg;
+    color: #000000;
+
+    svg {
+      color: #000000;
+    }
+  }
+
+  svg {
+    font-size: 1.6rem;
+    width: 18px;
+    text-align: center;
+    color: #71717a;
+  }
+
+  &.danger {
+    color: #ef4444;
+
+    svg {
+      color: #ef4444;
+    }
+
+    &[data-highlighted] {
+      background-color: #fef2f2;
+      color: #dc2626;
+
+      svg {
+        color: #dc2626;
+      }
+    }
+  }
+}
+
+@keyframes slideUpAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.label {
+  flex: 1;
+}
+
+.menuTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #a1a1aa;
+  padding: 6px 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.optWrapper[data-state='open'] {
+  background-color: $hover-bg;
+  color: #000000;
+
+  svg {
+    color: #000000;
+  }
+}

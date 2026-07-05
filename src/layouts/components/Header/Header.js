@@ -12,11 +12,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faBell, faComment } from '@fortawesome/free-regular-svg-icons';
 import { ThemeSwitcher } from '~/components/ThemeSwitcher';
+import { Menu } from '~/components/Menu';
+import { getMenuItems } from './menuItems.data';
 
 function Header() {
   const { isSignInOpen, setIsSignInOpen } = useAuthUI();
   const { isLogin, userInfo } = useContext(UserInfoContext);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const getAvatar = () => {
+    return (
+      <Image
+        src={userInfo?.avatar}
+        alt="User avatar"
+        className={styles.avatar}
+      />
+    );
+  };
+
+  const menuItems = getMenuItems();
 
   useEffect(() => {
     const handleColorChange = () => {
@@ -79,7 +93,7 @@ function Header() {
         </div>
 
         <div className={styles.rightBlock}>
-          {isLogin ? (
+          {true ? (
             <div>
               <Button primary circle>
                 <FontAwesomeIcon icon={faPlus} />
@@ -90,11 +104,7 @@ function Header() {
               <Button primary circle>
                 <FontAwesomeIcon icon={faBell} />
               </Button>
-              <Image
-                src={userInfo?.avatar}
-                alt="User avatar"
-                className={styles.avatar}
-              />
+              <Menu children={getAvatar()} menuItems={menuItems} />
             </div>
           ) : (
             <Button primary onClick={handleOpenForm}>
