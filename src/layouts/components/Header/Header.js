@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { Image } from '~/components/Image';
 import images from '~/assets/images';
@@ -19,6 +19,7 @@ function Header() {
   const { isSignInOpen, setIsSignInOpen } = useAuthUI();
   const { isLogin, userInfo } = useContext(UserInfoContext);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
   const getAvatar = () => {
     return (
@@ -95,7 +96,13 @@ function Header() {
         <div className={styles.rightBlock}>
           {true ? (
             <div>
-              <Button primary circle>
+              <Button
+                primary
+                circle
+                onClick={() => {
+                  navigate('/create');
+                }}
+              >
                 <FontAwesomeIcon icon={faPlus} />
               </Button>
               <Button primary circle>

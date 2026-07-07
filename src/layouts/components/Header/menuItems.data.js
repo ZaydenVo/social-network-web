@@ -6,6 +6,10 @@ import {
   faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
+const handleLogout = () => {
+  console.log('Logout');
+};
+
 export const getMenuItems = (userInfo) => {
   const username = userInfo?.username || 'me';
 
@@ -53,7 +57,7 @@ export const getMenuItems = (userInfo) => {
     {
       icon: faSignOutAlt,
       label: 'Sign out',
-      action: 'logout',
+      action: handleLogout,
       isDanger: true,
       hasSeparator: true,
     },

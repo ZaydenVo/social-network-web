@@ -3,9 +3,20 @@ import styles from './Menu.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import { useTheme } from '~/Provider/ThemeProvider';
+import { useNavigate } from 'react-router-dom';
 
 function Menu({ children, menuItems }) {
   const { isLightMode } = useTheme();
+  const navigate = useNavigate();
+
+  const handleOnSelect = (opt) => {
+    if (opt.to) {
+      navigate(opt.to);
+    } else if (opt.action) {
+      opt.action();
+    }
+  };
+
   return (
     <DropdownMenu.Root modal={false}>
       <DropdownMenu.Trigger asChild>{children}</DropdownMenu.Trigger>
@@ -61,6 +72,7 @@ function Menu({ children, menuItems }) {
                   className={clsx(styles.optWrapper, {
                     [styles.danger]: opt.isDanger,
                   })}
+                  onSelect={() => handleOnSelect(opt)}
                 >
                   <FontAwesomeIcon icon={opt.icon} />
                   <span className={styles.label}>{opt.label}</span>
