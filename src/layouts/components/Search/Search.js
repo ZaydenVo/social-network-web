@@ -129,6 +129,7 @@ function Search() {
                   <ResultItem
                     key={result.id}
                     result={result}
+                    isLightMode={isLightMode}
                     onClick={() => setSearchValue('')}
                   />
                 ))}

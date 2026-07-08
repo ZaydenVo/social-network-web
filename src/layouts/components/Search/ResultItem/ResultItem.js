@@ -3,9 +3,7 @@ import styles from './ResultItem.module.scss';
 import { Image } from '~/components/Image';
 import clsx from 'clsx';
 
-const ResultItem = ({ result, onClick }) => {
-  const { isLightMode } = useTheme();
-
+const ResultItem = ({ result, onClick, isLightMode }) => {
   if (result.username) {
     return (
       <div
