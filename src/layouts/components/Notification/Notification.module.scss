@@ -1,7 +1,7 @@
 .popover {
-  min-width: 320px;
-  max-width: 360px;
-  max-height: 440px;
+  min-width: 340px;
+  max-width: 380px;
+  max-height: 480px;
   overflow-y: auto;
   background-color: var(--menu-bg);
   border: 1px solid var(--menu-border);
@@ -24,11 +24,9 @@
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
-  outline: none;
   transition: background-color 0.15s ease;
 
-  &:hover,
-  &[data-focused] {
+  &:hover {
     background-color: var(--menu-hover-bg);
   }
 }

@@ -1,0 +1,58 @@
+.notificationContent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  position: relative;
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+    width: 100%;
+    padding-right: 16px;
+
+    .text {
+      font-size: 1.3rem;
+      color: var(--menu-sub-title);
+      line-height: 1.4;
+      margin: 0;
+
+      .name {
+        font-weight: 600;
+        color: var(--menu-text);
+      }
+
+      &.unread {
+        color: var(--menu-text);
+      }
+    }
+
+    .createdAt {
+      font-size: 1.1rem;
+      color: var(--menu-sub-title);
+      font-style: italic;
+      margin-top: 2px;
+    }
+  }
+
+  .unreadDot {
+    position: absolute;
+    right: 4px;
+    width: 8px;
+    height: 8px;
+    background-color: #00ffff;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+}

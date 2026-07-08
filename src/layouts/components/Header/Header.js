@@ -10,12 +10,12 @@ import clsx from 'clsx';
 import { UserInfoContext } from '~/Provider/UserInfoProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { faBell } from '@fortawesome/free-regular-svg-icons';
 import { ThemeSwitcher } from '~/components/ThemeSwitcher';
 import { Menu } from '~/layouts/components/Menu';
 import { getMenuItems } from './menuItems.data';
 import { Message } from '../Message';
 import { useTheme } from '~/Provider/ThemeProvider';
+import { Notification } from '../Notification';
 
 function Header() {
   const { isSignInOpen, setIsSignInOpen } = useAuthUI();
@@ -111,9 +111,8 @@ function Header() {
 
               <Message isLightMode={isLightMode} />
 
-              <Button primary circle>
-                <FontAwesomeIcon icon={faBell} />
-              </Button>
+              <Notification isLightMode={isLightMode} />
+
               <Menu children={getAvatar()} menuItems={menuItems} />
             </div>
           ) : (

@@ -56,6 +56,8 @@ function Message({ isLightMode }) {
           sideOffset={8}
           className={clsx(styles.popover, { lightTheme: isLightMode })}
         >
+          <div className={styles.header}>Message</div>
+
           {MOCK_MESSAGES.map((message) => (
             <div key={message.id} className={styles.wrapper}>
               <MessageItem message={message} isLightMode={isLightMode} />
