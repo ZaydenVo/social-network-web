@@ -97,7 +97,7 @@ function Header() {
         </div>
 
         <div className={styles.rightBlock}>
-          {isLogin ? (
+          {true ? (
             <div>
               <Button
                 primary

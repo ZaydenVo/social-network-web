@@ -8,8 +8,6 @@ import {
 import httpRequest from '~/utils/httpRequest';
 
 export const getMenuItems = (userInfo, setUserInfo) => {
-  const username = userInfo?.username || 'me';
-
   const handleLogout = async () => {
     try {
       await httpRequest.post('identity/auth/logout', {
@@ -27,7 +25,7 @@ export const getMenuItems = (userInfo, setUserInfo) => {
     {
       icon: faUser,
       label: 'Profile',
-      to: `/profile/${username}`,
+      to: '/profile',
     },
     {
       icon: faBookmark,
