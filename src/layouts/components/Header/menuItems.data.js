@@ -5,13 +5,23 @@ import {
   faGear,
   faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
+import httpRequest from '~/utils/httpRequest';
 
-const handleLogout = () => {
-  console.log('Logout');
-};
-
-export const getMenuItems = (userInfo) => {
+export const getMenuItems = (userInfo, setUserInfo) => {
   const username = userInfo?.username || 'me';
+
+  const handleLogout = async () => {
+    try {
+      await httpRequest.post('identity/auth/logout', {
+        token: localStorage.getItem('token'),
+      });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      localStorage.removeItem('token');
+      if (setUserInfo) setUserInfo(null);
+    }
+  };
 
   return [
     {

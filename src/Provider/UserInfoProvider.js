@@ -32,7 +32,9 @@ export function UserInfoProvider({ children }) {
   const isLogin = !!userInfo;
 
   return (
-    <UserInfoContext.Provider value={{ userInfo, isLogin, fetchUserInfo }}>
+    <UserInfoContext.Provider
+      value={{ userInfo, setUserInfo, isLogin, fetchUserInfo }}
+    >
       {children}
     </UserInfoContext.Provider>
   );

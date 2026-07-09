@@ -20,7 +20,7 @@ import { Notification } from '../Notification';
 function Header() {
   const { isSignInOpen, setIsSignInOpen } = useAuthUI();
   const { isLightMode } = useTheme();
-  const { isLogin, userInfo } = useContext(UserInfoContext);
+  const { isLogin, userInfo, setUserInfo } = useContext(UserInfoContext);
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
 
@@ -34,7 +34,7 @@ function Header() {
     );
   };
 
-  const menuItems = getMenuItems();
+  const menuItems = getMenuItems(userInfo, setUserInfo);
 
   useEffect(() => {
     const handleColorChange = () => {
@@ -97,7 +97,7 @@ function Header() {
         </div>
 
         <div className={styles.rightBlock}>
-          {true ? (
+          {isLogin ? (
             <div>
               <Button
                 primary
