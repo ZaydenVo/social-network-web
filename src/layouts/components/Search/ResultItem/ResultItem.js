@@ -1,15 +1,10 @@
-import { useTheme } from '~/Provider/ThemeProvider';
 import styles from './ResultItem.module.scss';
 import { Image } from '~/components/Image';
-import clsx from 'clsx';
 
-const ResultItem = ({ result, onClick, isLightMode }) => {
+const ResultItem = ({ result, onClick }) => {
   if (result.username) {
     return (
-      <div
-        className={clsx(styles.resultsWrapper, { lightTheme: isLightMode })}
-        onClick={onClick}
-      >
+      <div className={styles.resultsWrapper} onClick={onClick}>
         <Image src={result.avatar} alt="avatar" />
         <div className={styles.userInfo}>
           <span className={styles.username}>{result.name}</span>
@@ -20,10 +15,7 @@ const ResultItem = ({ result, onClick, isLightMode }) => {
   }
 
   return (
-    <div
-      className={clsx(styles.resultsWrapper, { lightTheme: isLightMode })}
-      onClick={onClick}
-    >
+    <div className={styles.resultsWrapper} onClick={onClick}>
       <div className={styles.postContent}>
         <span className={styles.title}>{result.title}</span>
         <span className={styles.postMeta}>

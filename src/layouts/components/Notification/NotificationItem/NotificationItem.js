@@ -2,11 +2,9 @@ import clsx from 'clsx';
 import styles from './NotificationItem.module.scss';
 import { Image } from '~/components/Image';
 
-function NotificationItem({ notification, isLightMode }) {
+function NotificationItem({ notification }) {
   return (
-    <div
-      className={clsx(styles.notificationContent, { lightTheme: isLightMode })}
-    >
+    <div className={styles.notificationContent}>
       <Image
         src={notification.user.avatar}
         alt={notification.user.name}

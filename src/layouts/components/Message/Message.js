@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from '~/components/Button';
 import styles from './Message.module.scss';
 import * as Popover from '@radix-ui/react-popover';
-import clsx from 'clsx';
 import { MessageItem } from './MessageItem';
 
 const MOCK_MESSAGES = [
@@ -41,7 +40,7 @@ const MOCK_MESSAGES = [
   },
 ];
 
-function Message({ isLightMode }) {
+function Message() {
   return (
     <Popover.Root modal={false}>
       <Popover.Trigger asChild>
@@ -54,13 +53,13 @@ function Message({ isLightMode }) {
         <Popover.Content
           align="center"
           sideOffset={8}
-          className={clsx(styles.popover, { lightTheme: isLightMode })}
+          className={styles.popover}
         >
           <div className={styles.header}>Message</div>
 
           {MOCK_MESSAGES.map((message) => (
             <div key={message.id} className={styles.wrapper}>
-              <MessageItem message={message} isLightMode={isLightMode} />
+              <MessageItem message={message} />
             </div>
           ))}
         </Popover.Content>

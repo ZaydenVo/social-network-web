@@ -4,8 +4,6 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import * as Popover from '@radix-ui/react-popover';
 import { useEffect, useRef, useState } from 'react';
 import { ResultItem } from './ResultItem';
-import { useTheme } from '~/Provider/ThemeProvider';
-import clsx from 'clsx';
 
 const MOCK_SEARCH_RESULTS = {
   users: [
@@ -55,7 +53,6 @@ function Search() {
   const [showResults, setShowResults] = useState(false);
   const [isFocus, setIsFocus] = useState(false);
   const inputRef = useRef(null);
-  const { isLightMode } = useTheme();
 
   useEffect(() => {
     if (searchValue.trim().length > 0) {
@@ -106,7 +103,7 @@ function Search() {
           <Popover.Content
             align="center"
             sideOffset={8}
-            className={clsx(styles.Popover, { lightTheme: isLightMode })}
+            className={styles.Popover}
             onOpenAutoFocus={(e) => e.preventDefault()}
             onEscapeKeyDown={handleEscapeKeyDown}
           >
@@ -129,7 +126,6 @@ function Search() {
                   <ResultItem
                     key={result.id}
                     result={result}
-                    isLightMode={isLightMode}
                     onClick={() => setSearchValue('')}
                   />
                 ))}

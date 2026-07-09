@@ -2,9 +2,9 @@ import clsx from 'clsx';
 import styles from './MessageItem.module.scss';
 import { Image } from '~/components/Image';
 
-function MessageItem({ message, isLightMode }) {
+function MessageItem({ message }) {
   return (
-    <div className={clsx(styles.messageContent, { lightTheme: isLightMode })}>
+    <div className={styles.messageContent}>
       <Image
         src={message.user.avatar}
         alt={message.user.name}

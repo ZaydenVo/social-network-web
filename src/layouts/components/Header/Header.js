@@ -14,12 +14,10 @@ import { ThemeSwitcher } from '~/components/ThemeSwitcher';
 import { Menu } from '~/layouts/components/Menu';
 import { getMenuItems } from './menuItems.data';
 import { Message } from '../Message';
-import { useTheme } from '~/Provider/ThemeProvider';
 import { Notification } from '../Notification';
 
 function Header() {
   const { isSignInOpen, setIsSignInOpen } = useAuthUI();
-  const { isLightMode } = useTheme();
   const { isLogin, userInfo, setUserInfo } = useContext(UserInfoContext);
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
@@ -109,9 +107,9 @@ function Header() {
                 <FontAwesomeIcon icon={faPlus} />
               </Button>
 
-              <Message isLightMode={isLightMode} />
+              <Message />
 
-              <Notification isLightMode={isLightMode} />
+              <Notification />
 
               <Menu children={getAvatar()} menuItems={menuItems} />
             </div>

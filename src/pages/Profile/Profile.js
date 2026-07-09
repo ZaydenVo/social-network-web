@@ -5,8 +5,6 @@ import {
   faCakeCandles,
   faMapMarkerAlt,
 } from '@fortawesome/free-solid-svg-icons';
-import { useTheme } from '~/Provider/ThemeProvider';
-import clsx from 'clsx';
 
 export const MOCK_PROFILE = {
   id: '184a2c4b-dc21-4691-91c8-44d4afdeadef',
@@ -21,13 +19,11 @@ export const MOCK_PROFILE = {
 };
 
 function Profile() {
-  const { isLightMode } = useTheme();
-
   const defaultCover =
     'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=80';
 
   return (
-    <div className={clsx(styles.profileContainer, { lightTheme: isLightMode })}>
+    <div className={styles.profileContainer}>
       <div className={styles.heroSection}>
         <div className={styles.coverWrapper}>
           <Image src={defaultCover} alt="Cover" className={styles.coverImg} />

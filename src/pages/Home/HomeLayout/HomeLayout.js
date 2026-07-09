@@ -4,27 +4,19 @@ import { Image } from '~/components/Image';
 import images from '~/assets/images';
 import clsx from 'clsx';
 import { useRef } from 'react';
-import { useTheme } from '~/Provider/ThemeProvider';
 import { Link } from 'react-router-dom';
 import { COSMIC_INSIGHTS } from './cosmicInsights.data';
 import { InsightCard } from '../components/InsightCard';
 
 function HomeLayout({ children, active = false }) {
   const feedRef = useRef(null);
-  const { isLightMode } = useTheme();
 
   const handleScrollToFeed = () => {
     feedRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div
-      className={clsx(
-        styles.wrapper,
-        { [styles.active]: active },
-        { lightTheme: isLightMode },
-      )}
-    >
+    <div className={clsx(styles.wrapper, { [styles.active]: active })}>
       <section className={styles.welcomeSection}>
         <ParticlesBg />
         <h1 className={styles.slogan}>

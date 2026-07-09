@@ -2,11 +2,9 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import styles from './Menu.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
-import { useTheme } from '~/Provider/ThemeProvider';
 import { useNavigate } from 'react-router-dom';
 
 function Menu({ children, menuItems }) {
-  const { isLightMode } = useTheme();
   const navigate = useNavigate();
 
   const handleOnSelect = (opt) => {
@@ -24,7 +22,7 @@ function Menu({ children, menuItems }) {
       <DropdownMenu.Content
         align="end"
         sideOffset={8}
-        className={clsx(styles.dropdownMenu, { lightTheme: isLightMode })}
+        className={styles.dropdownMenu}
       >
         {menuItems.map((opt) => {
           const hasChildren = !!opt.children;
@@ -45,9 +43,7 @@ function Menu({ children, menuItems }) {
                     <DropdownMenu.SubContent
                       sideOffset={4}
                       alignOffset={-6}
-                      className={clsx(styles.dropdownMenu, {
-                        lightTheme: isLightMode,
-                      })}
+                      className={styles.dropdownMenu}
                     >
                       <div className={styles.menuTitle}>
                         {opt.children.title}

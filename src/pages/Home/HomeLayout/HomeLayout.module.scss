@@ -23,12 +23,6 @@
 
   transition: background-color 0.5s ease;
 
-  &.lightTheme {
-    --bg-feed: #f6f7f9;
-    --text-feed: #1c1e21;
-    --title-gradient-start: #1c1e21;
-  }
-
   &.active {
     .slogan {
       transform: translateX(-100%);

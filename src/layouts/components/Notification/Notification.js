@@ -3,7 +3,6 @@ import { faBell } from '@fortawesome/free-regular-svg-icons';
 import { Button } from '~/components/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as Popover from '@radix-ui/react-popover';
-import clsx from 'clsx';
 import { NotificationItem } from './NotificationItem';
 
 const MOCK_NOTIFICATIONS = [
@@ -43,7 +42,7 @@ const MOCK_NOTIFICATIONS = [
   },
 ];
 
-function Notification({ isLightMode }) {
+function Notification() {
   return (
     <Popover.Root modal={false}>
       <Popover.Trigger asChild>
@@ -56,16 +55,13 @@ function Notification({ isLightMode }) {
         <Popover.Content
           align="center"
           sideOffset={8}
-          className={clsx(styles.popover, { lightTheme: isLightMode })}
+          className={styles.popover}
         >
           <div className={styles.header}>Notification</div>
 
           {MOCK_NOTIFICATIONS.map((notification) => (
             <div key={notification.id} className={styles.wrapper}>
-              <NotificationItem
-                notification={notification}
-                isLightMode={isLightMode}
-              />
+              <NotificationItem notification={notification} />
             </div>
           ))}
         </Popover.Content>

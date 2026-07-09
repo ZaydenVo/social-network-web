@@ -1,9 +1,20 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes } from './routes';
 import DefaultLayout from './layouts/DefaultLayout/DefaultLayout';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
+import { useTheme } from './Provider/ThemeProvider';
 
 function App() {
+  const { isLightMode } = useTheme();
+
+  useEffect(() => {
+    if (isLightMode) {
+      document.documentElement.classList.add('lightTheme');
+    } else {
+      document.documentElement.classList.remove('lightTheme');
+    }
+  }, [isLightMode]);
+
   return (
     <Router>
       <div className="App">
